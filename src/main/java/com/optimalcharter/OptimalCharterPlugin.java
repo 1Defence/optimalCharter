@@ -1,4 +1,4 @@
-package com.example;
+package com.optimalcharter;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -14,40 +14,32 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Example"
+	name = "Optimal Charter"
 )
-public class ExamplePlugin extends Plugin
+public class OptimalCharterPlugin extends Plugin
 {
 	@Inject
 	private Client client;
 
 	@Inject
-	private ExampleConfig config;
+	private OptimalCharterConfig config;
 
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.debug("Example started!");
+
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.debug("Example stopped!");
+
 	}
 
-	@Subscribe
-	public void onGameStateChanged(GameStateChanged gameStateChanged)
-	{
-		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
-		{
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Example says " + config.greeting(), null);
-		}
-	}
 
 	@Provides
-	ExampleConfig provideConfig(ConfigManager configManager)
+	OptimalCharterConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(ExampleConfig.class);
+		return configManager.getConfig(OptimalCharterConfig.class);
 	}
 }
